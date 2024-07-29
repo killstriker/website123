@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html ng-app="canvasEngine">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Canvanizer</title>
+    <meta name="description" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1"
+    />
+    <base href="/" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <link rel="stylesheet" href="main.812855ed9af601d12112.css" />
+    <script src="https://canvanizer.com/js/cookieconsent2.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://canvanizer.com/css/cookieconsent2.css"
+      media="screen"
+      charset="utf-8"
+    />
+  </head>
+  <body>
+    <script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["setRequestMethod", "POST"]),
+        _paq.push(["enableLinkTracking"]),
+        (function () {
+          var e = "//mtm.canvanizer.com/";
+          _paq.push(["setRequestMethod", "POST"]),
+            _paq.push(["setTrackerUrl", e + "js/"]),
+            window.location.hostname.match(/^.*preview.*$/) &&
+              _paq.push(["setSiteId", "3"]),
+            window.location.hostname.match(/^.*preview.*$/) ||
+              _paq.push(["setSiteId", "1"]);
+          var a = document,
+            t = a.createElement("script"),
+            s = a.getElementsByTagName("script")[0];
+          (t.async = !0), (t.src = e + "js/"), s.parentNode.insertBefore(t, s);
+        })();
+    </script>
+    <react-top-bar></react-top-bar
+    ><react-welcome-overview></react-welcome-overview>
+    <div class="app-view" ui-view></div>
+    <script src="bundle.812855ed9af601d12112.js"></script>
+    <div id="gdpr_banner"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var enableMouseflow = true; // Mouseflow: set this to false to deactivate Mouseflow
+        var cookieRight = document.querySelector(".cookieConsent__Right");
+
+        var gdprAcceptAllButton = document.createElement("button");
+        gdprAcceptAllButton.id = "gdprAcceptAll";
+        gdprAcceptAllButton.className = "cookieConsent__Button";
+        gdprAcceptAllButton.textContent = "Accept all";
+
+        gdprAcceptAllButton.addEventListener("click", function () {
+          var cookieConsentWrapper = document.querySelector(
+            ".cookieConsentWrapper"
+          );
+          if (cookieConsentWrapper) {
+            cookieConsentWrapper.style.display = "none";
+          }
+
+          document.cookie =
+            "canvanizer_gdpr=%7B%22choices%22%3A%7B%22necessary%22%3Atrue%2C%22tracking%22%3Afalse%2C%22analytics%22%3Atrue%2C%22marketing%22%3Afalse%7D%7D";
+
+          loadFacebookPixel();
+          if (enableMouseflow) {
+            loadMouseflow();
+          }
+        });
+
+        if (cookieRight) {
+          cookieRight.appendChild(gdprAcceptAllButton);
+        }
+
+        var cookieConsentToggle = document.querySelector(
+          ".cookieConsentToggle"
+        );
+        if (cookieConsentToggle) {
+          cookieConsentToggle.addEventListener("click", function () {
+            var cookieConsentWrapper = document.querySelector(
+              ".cookieConsentWrapper"
+            );
+            if (cookieConsentWrapper) {
+              cookieConsentWrapper.style.display = "block";
+            }
+          });
+        }
+      });
+
+      var loadFacebookPixel = function () {
+        !(function (f, b, e, v, n, t, s) {
+          if (f.fbq) return;
+          n = f.fbq = function () {
+            n.callMethod
+              ? n.callMethod.apply(n, arguments)
+              : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n;
+          n.push = n;
+          n.loaded = !0;
+          n.version = "2.0";
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = !0;
+          t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(
+          window,
+          document,
+          "script",
+          "https://connect.facebook.net/en_US/fbevents.js"
+        );
+        fbq("init", "1608063602555991");
+        fbq("track", "PageView");
+      };
+
+      var loadMouseflow = function () {
+        window._mfq = window._mfq || [];
+        (function () {
+          var mf = document.createElement("script");
+          mf.type = "text/javascript";
+          mf.async = true;
+          mf.src =
+            "//cdn.mouseflow.com/projects/1c46c0a8-5e7f-4575-811f-86a09dcd8823.js";
+          document.getElementsByTagName("head")[0].appendChild(mf);
+        })();
+      };
+
+      GdprConsent.attachBanner(document.getElementById("gdpr_banner"), {
+        cookieName: "canvanizer_gdpr",
+        acceptLabel: "Save",
+        settingsLabel: "Settings",
+        closeLabel: "Close",
+        heading: "Privacy settings",
+        description:
+          'In order to optimize our website for you and to be able to continuously improve it, we use cookies. By continuing to use the website, you agree to the use of cookies. <a href="/privacy" style="color: #000; text-decoration: underline;">Privacy policy</a>',
+        choices: {
+          necessary: {
+            label: "Essential",
+            description:
+              "Essential cookies enable basic functions and are necessary for the proper function of the website.",
+            value: true,
+          },
+          analytics: {
+            label: "Statistics",
+            description:
+              "Statistics cookies collect information anonymously. This information helps us to understand how our visitors use our website.",
+            value: false,
+          },
+          marketing: {
+            label: "Marketing",
+            description:
+              "Marketing cookies are used by third-party advertisers or publishers to display personalized ads. They do this by tracking visitors across websites.",
+            value: false,
+          },
+          tracking: false,
+        },
+        categories: {
+          analytics: function () {
+            loadMouseflow();
+          },
+          marketing: function () {
+            loadFacebookPixel();
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

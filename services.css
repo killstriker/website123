@@ -1,0 +1,63 @@
+@import url("6608cf6dbce0e8a6f9460f696b7f7869.jpg");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: url() no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 32px;
+  color:green;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.navbar a {
+  position: relative;
+  font-size: 25px;
+  color:rgb(239, 9, 9);
+  font-weight: 500;
+  text-decoration: none;
+  margin-right: 40px;
+}
+
+.navbar a::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: rgb(8, 1, 1);
+  transition: .3s;
+}
+
+.navbar a:hover::before {
+    width: 100%;
+}
+
+.navbar a:hover {
+    background: rgb(242, 235, 98);
+}
