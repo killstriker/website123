@@ -1,7 +1,190 @@
+/* Reset margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General body styles */
 body {
     font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    padding: 20%;
+    background-color: #E0F7E9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure content starts below the fixed navbar */
+body {
+    padding-top: 70px; /* Adjust based on header height */
+}
+
+/* Navbar (Header) */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #023047;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Logo styling */
+.logo {
+    font-size: 32px;
+    text-decoration: none;
+    font-weight: 700;
+    color: white; /* Ensure logo text is visible */
+}
+
+/* Navbar links styling */
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.navbar a {
+    font-size: 18px;
+    color: #8ECAE6;
+    font-weight: 500;
+    text-decoration: none;
+    margin-right: 20px; /* Adjust spacing between links */
+    padding: 8px 12px;
+    position: relative;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: white;
+    transition: width 0.3s;
+}
+
+.navbar a:hover::before {
+    width: 100%;
+}
+
+.navbar a:hover {
+    background: rgb(242, 235, 98);
+    color: #000; /* Change color on hover if needed */
+}
+
+/* Hero section styling */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("your-hero-image.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    margin-top: 20px; /* Ensure it's not overlapped by the navbar */
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+}
+
+/* Content styling */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+    max-width: 500px;
+    margin: auto;
+}
+
+.content .section {
+    flex: 1;
+    min-width: 300px;
+    background-color: #FFFFFF;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content .section img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #FEFEFE;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Zoom animation for modal */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0);
+    }
+    to {
+        -webkit-transform: scale(1);
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
 /* Full-width input fields */
@@ -10,12 +193,11 @@ input[type="password"] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
-    display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
+/* Buttons styling */
 button {
     background-color: #04AA6D;
     color: white;
@@ -49,161 +231,38 @@ img.avatar {
     border-radius: 50%;
 }
 
-.container {
-    padding: 16px;
-}
-
+/* Password span styling */
 span.psw {
     float: right;
     padding-top: 16px;
 }
 
-/* The Modal (background) */
-.modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
-    padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-    background-color: #FEFEFE;
-    margin: 5% auto 15% auto;
-    /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 80%;
-    /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button (x) */
-.close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: red;
-    cursor: pointer;
-}
-
-/* Add Zoom Animation */
-.animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s;
-}
-
-@-webkit-keyframes animatezoom {
-    from {
-        -webkit-transform: scale(0);
+/* Responsive Design for Smaller Screens */
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 10px;
     }
-    to {
-        -webkit-transform: scale(1);
-    }
-}
 
-@keyframes animatezoom {
-    from {
-        transform: scale(0);
-    }
-    to {
-        transform: scale(1);
-    }
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-    span.psw {
-        display: block;
-        float: none;
-    }
-    .cancelbtn {
+    .navbar {
+        flex-direction: column;
         width: 100%;
+        align-items: flex-start;
+    }
+
+    .navbar a {
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+        padding: 10px;
+    }
+
+    .hero {
+        height: 200px; /* Adjust height for smaller screens */
     }
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #E0F7E9;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    max-width: 500px;
-    margin: auto;
-}
-
-header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem;
-}
-
-.hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url("your-hero-image.jpg");
-    background-size: cover;
-    background-position: center;
-    height: 300px;
-    color: white;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-}
-
-.hero h1 {
-    font-size: 2.5rem;
-}
-
-.content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 2rem;
-    max-width: 500px;
-    margin: auto;
-}
-
-.content .section {
-    flex: 1;
-    min-width: 300px;
-    background-color: #FFFFFF;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.content .section img {
-    width: 100%;
-    border-radius: 8px;
-}
-
+/* Footer styling */
 footer {
     background-color: #4CAF50;
     color: white;

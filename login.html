@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <div>
+        <header class="header">
+        <a href="home.html"><img class="top-image" src="T-removebg-preview.png" alt="image"/>
+        <nav class="navbar">
+            <a href="aboutme.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Register</a>
+        </nav>
+        </header>
+    </div>
+
     <h2>Login Form</h2>
     <!-- Here is the log in button -->
     <button onclick="document.getElementById('loginModal').style.display='block'" style="width: auto">Login</button>
@@ -75,7 +87,7 @@
             })
             .then((response) => {
                 if (response.ok) {
-                    window.location.href = "/Users/antoniowebster/Desktop/Website/home.html";
+                    window.location.href = "home.html";
                 } else {
                     return response.text().then((text) => {
                         throw new Error(text);
